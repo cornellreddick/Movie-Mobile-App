@@ -19,9 +19,12 @@ import javax.annotation.Generated;
 @Generated("jsonschema2pojo")
 public class Movie extends BaseObservable implements Parcelable {
 
+    // Use Glide Libarary to display images.
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
+
+
     @SerializedName("adult")
     @Expose
     private Boolean adult;
