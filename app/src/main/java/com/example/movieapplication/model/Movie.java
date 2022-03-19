@@ -3,12 +3,14 @@ package com.example.movieapplication.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.library.baseAdapters.BR;
 
-
+import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -64,6 +66,17 @@ public class Movie extends BaseObservable implements Parcelable {
     @SerializedName("vote_average")
     @Expose
     private Double voteAverage;
+
+    @BindingAdapter({"posterPath"})
+    public static  void loadImage(ImageView imageView, String imageURL){
+
+        String imagePath = "https://image.tmdb.org/t/p/w500"+imageURL;
+
+        Glide.with(imageView.getContext())
+                .load(imagePath)
+                .into(imageView);
+
+    }
 
 // Parcel
     public final  static Parcelable.Creator<Movie> CREATOR = new Creator<Movie>() {
